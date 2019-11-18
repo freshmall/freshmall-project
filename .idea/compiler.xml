@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-server" />
+        <module name="freshmall-common-es" />
+        <module name="freshmall-common-resources" />
+        <module name="freshmall-img-service" />
+        <module name="freshmall-order-service" />
+        <module name="freshmall-product-service" />
+        <module name="freshmall-search-service" />
+        <module name="freshmall-user-service" />
+        <module name="zuul-gateway" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
