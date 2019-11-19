@@ -1,9 +1,8 @@
 package com.fresh.common.vo;
 
+import com.fresh.common.pojo.Product;
+
 import java.util.List;
-
-import com.jt.common.pojo.Product;
-
 
 /**
  * @author admin
