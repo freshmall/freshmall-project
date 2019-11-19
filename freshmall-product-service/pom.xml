@@ -10,12 +10,54 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>freshmall-product-service</artifactId>
+
     <dependencies>
+
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>freshmall-common-resources</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-redis</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>cn.tedu</groupId>
             <artifactId>freshmall-common-resources</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>transport</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.tedu</groupId>
+            <artifactId>freshmall-common-es</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+
         <!--springjdbc依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,31 +73,13 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>transport</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.tedu</groupId>
-            <artifactId>freshmall-common-es</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+
+
     </dependencies>
 
 </project>

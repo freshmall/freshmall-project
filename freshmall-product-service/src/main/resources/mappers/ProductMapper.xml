@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.product.mapper.ProductMapper">
+
+
+	<!-- 根据productId查询商品详情 -->
+	<select id="selectProductByProductId" resultType="Product">
+		select
+			*
+		from
+			t_product
+		where
+			product_id=#{productId};
+	</select>
+
+
+	<!-- 查询product总条数 -->
+	<select id="countProducts" resultType="int">
+		select
+			count(product_id)
+		from
+			t_product;
+	</select>
+	
+	<!-- 根据页面参数分页查询 -->
+	<select id="queryProductList" resultType="Product">
+		select
+			*
+		from
+			t_product
+		limit
+			#{start},#{rows};
+	</select>
+
+	<!-- 根据商品销量排名的分页查询 -->
+	<select id="queryProductList" resultType="Product">
+		select
+			*
+		from
+			t_product
+		order by
+			product_salves
+		limit 0,4;
+	</select>
+
+	
+
+	
+</mapper>
+
+
+
+
+
+
+
+
