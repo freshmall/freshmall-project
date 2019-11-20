@@ -18,11 +18,20 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 
+	/**
+	 * 利用用户名查询用户名是否存在
+	 * @param checkUserName  用户名
+	 * @return 用户名是否存在
+	 */
 	public Boolean checkUserName(String checkUserName) {
 		int result = userMapper.selectUserCountByUserName(checkUserName);
 		return result == 1;
 	}
 
+	/**
+	 * 注册用户
+	 * @param user 用户bean
+	 */
 	public void saveUser(User user) {
 
 			user.setUserId(UUID.randomUUID().toString());
@@ -31,21 +40,20 @@ public class UserService {
 			user.setUserPassword(md5Password);
 			userMapper.insertUser(user);
 	}
-
-
+		//redis集群实现分布式高可用
 	@Autowired
 	private JedisCluster jedis;
+	/**
+	 * 登录校验
+	 */
 	public String doLogin(User user) {
-			/**
-			 * 登录校验
-			 */
 		user.setUserPassword(DigestUtils.md5Hex(user.getUserPassword()));
 		User exist = userMapper.selectUserByUserNameAndPassword(user);
 		if (exist == null) {
 			// 登录失败
 			return "";
 		} else {
-			// 引入顶替的逻辑
+			// 顶替的逻辑
 			try {
 				String userLoginIdent = "user_login_" + exist.getUserId();
 				String ticket = "EM_TICKET" + System.currentTimeMillis() + exist.getUserId();
@@ -78,5 +86,14 @@ public class UserService {
 			jedis.pexpire(userLoginIdent,60*60*1000);
 		}
 		return jedis.get(ticket);
+	}
+
+	/**
+	 * 退出
+	 * @param token cookie
+	 */
+	public void doLogout(String token) {
+		//将redis中的EM_TICKET的value值删除
+		jedis.del(token);
 	}
 }

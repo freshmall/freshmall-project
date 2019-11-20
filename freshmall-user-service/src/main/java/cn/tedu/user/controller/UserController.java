@@ -1,6 +1,7 @@
 package cn.tedu.user.controller;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import cn.tedu.user.service.UserService;
-import redis.clients.jedis.JedisCluster;
 
 
 @RestController
@@ -25,14 +25,15 @@ public class UserController {
 	 * 用户名的校验
 	 */
 	@RequestMapping("checkUserName")
-	public void checkUserName(String userName){
+	public SysResult checkUserName(String userName){
 		Boolean exist=userService.checkUserName(userName);
 		//判断返回值
 		if(exist){
-			//不可用
+			//说明用户名已经存在
+            return SysResult.build(201,"用户名已经存在",null);
 
 		}else{
-
+            return SysResult.ok();
 		}
 	}
 	/**
@@ -57,25 +58,45 @@ public class UserController {
 		}
 	}
 
-	@RestController
-	public static class ClusterController {
-		@Autowired
-		private JedisCluster jedis;
-		@RequestMapping("cluster")
-		public String setAndGet(String key,String value){
-			jedis.set(key, value);
-			return jedis.get(key);
-		}
-	}
 	@RequestMapping("/query/{ticket}")
 	public SysResult checkLoginUserData(@PathVariable String ticket){
 		String userJson=userService.checkLoginUserData(ticket);
 		if(StringUtils.isNotEmpty(userJson)){
-			//非空 登录状态在生效
+			//userJson非空 说明用户在登录
 			return SysResult.build(200,"登录正常",userJson);
 		}else{
-			//说明登录失效
+			//说明用户没有登录
 			return SysResult.build(201,"登录失效",null);
 		}
 	}
+
+    /**
+     * 退出功能
+     * @param user 用户
+     * @param req  请求
+     * @param res  响应
+     * @return
+     */
+    @RequestMapping("logout")
+    public SysResult doLogout(User user, HttpServletRequest req, HttpServletResponse res){
+        //获取cookie集合
+        Cookie[] cookies = req.getCookies();
+        String token = "";
+        for(Cookie cookie:cookies){
+            //获取名字叫EM_TICKET的cookie的value值
+            if(cookie.getName().equals("EM_TICKET")){
+                token = cookie.getValue();
+            }
+        }
+        //将cookie的value值传入service层的jedis中
+        userService.doLogout(token);
+        try {
+            //req.getRequestDispatcher("/index.html").forward(req, res);
+            res.sendRedirect("http://www.freshgree.com");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return SysResult.ok();
+
+    }
 }

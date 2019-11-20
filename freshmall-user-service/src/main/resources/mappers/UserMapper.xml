@@ -3,41 +3,31 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.tedu.user.mapper.UserMapper">
-    <select id="selectUserCountByUserName" parameterType="String" resultType="int">
-    select count(user_id) from t_user where user_name=#{userName};
+
+  <!--查询是否存在同名用户 0则表示没有同名-->
+	<select id="selectUserCountByUserName" parameterType="String" resultType="int">
+    select count(user_id) from user where user_name=#{userName};
+    </select>
+    <!--登录操作  -->
+	<select id="selectUserByUserNameAndPassword" parameterType="User" resultType="User">
+    	select * from user where user_name=#{userName} and user_password=#{userPassword};
     </select>
 
 
+	<!--注册-->
 	<insert id="insertUser" parameterType="User">
     insert into user (
 		user_id,
-		user_phone,
-		user_password
-		) values(
+		user_name,
+		user_password,
+		user_email,
+		user_nickname) values(
 		#{userId},
-		#{userPhone},
-		#{userPassword})
+		#{userName},
+		#{userPassword},
+		#{userEmail},
+		#{userNickname})
     </insert>
 
 
-    <!--登录操作  -->
-    <select id="selectUserByUserNameAndPassword" parameterType="User" resultType="User">
-    	select * from t_user where user_name=#{userName} and user_password=#{userPassword};
-    </select>
-
-	<!--   <insert id="insertUser" parameterType="User">
-   insert into t_user (
-       user_id,
-       user_name,
-       user_password,
-       user_email,
-       user_nickname,
-       user_type) values(
-       #{userId},
-       #{userName},
-       #{userPassword},
-       #{userEmail},
-       #{userNickname},
-       #{userType})
-   </insert>-->
 </mapper>

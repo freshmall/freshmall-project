@@ -2,7 +2,7 @@ package com.fresh.common.pojo;
 
 public class User {
 	private String userId;
-	private String userPhone;
+	private String userName;
 	private String userPassword;
 	public String getUserId() {
 		return userId;
@@ -10,18 +10,17 @@ public class User {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getUserIphone() {
-		return userPhone;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserIphone(String userPhone) {
-		this.userPhone = userPhone;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
 	public String getUserPassword() {
 		return userPassword;
 	}
-
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+	
 }
