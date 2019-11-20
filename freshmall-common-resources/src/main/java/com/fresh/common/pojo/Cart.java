@@ -6,7 +6,7 @@ public class Cart implements Serializable {
 
     private Integer id;
     private String userId;
-    private String pcode;
+    private String pid;
     private String pphoto;
     private String pname;
     private Double pscprice;
@@ -28,12 +28,12 @@ public class Cart implements Serializable {
         this.userId = userId;
     }
 
-    public String getPcode() {
-        return pcode;
+    public String getPid() {
+        return pid;
     }
 
-    public void setPcode(String pcode) {
-        this.pcode = pcode;
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getPphoto() {
