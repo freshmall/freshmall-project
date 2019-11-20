@@ -22,7 +22,7 @@ public class ProductControler {
      * @return  商品详情
      */
     @RequestMapping("/detail/{productId}")
-    public Product queryProductDetail(String productId){
+    public Product queryProductDetail(@PathVariable String productId){
         return productService.queryProductDetail(productId);
     }
 
@@ -34,8 +34,8 @@ public class ProductControler {
      * @param pdlcode 商品大类参数
      * @return 商品集合的json
      */
-    @RequestMapping("/query/{pdlcode}")
-    public EasyUIResult queryProductByPdlcodeAndPage(Integer page,Integer rows,@PathVariable String pdlcode){
+    @RequestMapping("/query/pdlcode")
+    public EasyUIResult queryProductByPdlcodeAndPage(Integer page,Integer rows,String pdlcode){
         return  productService.queryProductByPdlcodeAndPage(page,rows,pdlcode);
     }
 
@@ -46,8 +46,8 @@ public class ProductControler {
      * @param pxlcode
      * @return
      */
-    @RequestMapping("/query/{pxlcode}")
-    public EasyUIResult queryProductByPxlcodeAndPage(Integer page,Integer rows,@PathVariable String pxlcode){
+    @RequestMapping("/query/pxlcode")
+    public EasyUIResult queryProductByPxlcodeAndPage(Integer page,Integer rows,String pxlcode){
         return  productService.queryProductByPxlcodeAndPage(page,rows,pxlcode);
     }
 
@@ -58,8 +58,8 @@ public class ProductControler {
      * @param pname
      * @return
      */
-    @RequestMapping("/query/{pname}")
-    public EasyUIResult queryProductByPnameAndPage(Integer page,Integer rows,@PathVariable String pname){
+    @RequestMapping("/query/pname")
+    public EasyUIResult queryProductByPnameAndPage(Integer page,Integer rows,String pname){
         return  productService.queryProductByPnameAndPage(page,rows,pname);
     }
 

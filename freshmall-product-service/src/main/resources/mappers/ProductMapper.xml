@@ -12,14 +12,14 @@
 		from
 			product
 		where
-			product_id=#{productId};
+			pid=#{pid};
 	</select>
 
 
 	<!-- 查询某商品大类product总条数 -->
 	<select id="countProductsByPdlcode" resultType="int">
 		select
-			count(product_id)
+			count(pid)
 		from
 			product
 		where
@@ -42,7 +42,7 @@
 	<!-- 查询某商品小类product总条数 -->
 	<select id="countProductsByPxlcode" resultType="int">
 		select
-			count(product_id)
+			count(pid)
 		from
 			product
 		where
@@ -64,7 +64,7 @@
 	<!-- 查询某商品名称product总条数 -->
 	<select id="countProductsByPname" resultType="int">
 		select
-			count(product_id)
+			count(pid)
 		from
 			product
 		where

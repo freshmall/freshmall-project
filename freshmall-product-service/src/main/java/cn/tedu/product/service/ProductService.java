@@ -37,7 +37,7 @@ public class ProductService {
         int total = productMapper.countProductsByPdlcode(pdlcode);
         result.setTotal(total);
         int start = (page-1)*rows;
-        List<Product> productList = productMapper.queryProductListByPdlcodeAndPage(start,rows,pdlcode);
+        List<Product> productList = productMapper.queryProductListByPdlcodeAndPage(pdlcode,start,rows);
         result.setRows(productList);
         return result;
 

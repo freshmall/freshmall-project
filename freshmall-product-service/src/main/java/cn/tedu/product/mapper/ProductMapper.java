@@ -1,7 +1,7 @@
 package cn.tedu.product.mapper;
 
 import com.fresh.common.pojo.Product;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public interface ProductMapper {
      * @param pdlcode
      * @return
      */
-    List<Product> queryProductListByPdlcodeAndPage(@Param("start") int start, @Param("rows") Integer rows, @Param("pdlcode") String pdlcode);
+    List<Product> queryProductListByPdlcodeAndPage(@Param("pdlcode") String pdlcode, @Param("start") int start, @Param("rows") Integer rows);
 
     /**
      * 统计商品小类下的数据条数
