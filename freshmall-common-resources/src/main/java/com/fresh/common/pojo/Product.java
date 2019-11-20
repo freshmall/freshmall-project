@@ -5,6 +5,7 @@ import java.util.Date;
 public class Product {
     private String pid;
     private String pname;
+    private String showname;
     private String paddress;
     private String pstate;
     private String pdlcode;
@@ -13,7 +14,7 @@ public class Product {
     private String pgrade;
     private String pphoto;
     private String pbigphoto;
-    private int pscprice;
+    private double pscprice;
     private int phyprice;
     private String psum;
     private String putil;
@@ -21,7 +22,6 @@ public class Product {
     private Date starttime;
     private Date endtime;
 
-    private Integer test;
 
     public String getPid() {
         return pid;
@@ -104,11 +104,11 @@ public class Product {
         this.pbigphoto = pbigphoto;
     }
 
-    public int getPscprice() {
+    public double getPscprice() {
         return pscprice;
     }
 
-    public void setPscprice(int pscprice) {
+    public void setPscprice(double pscprice) {
         this.pscprice = pscprice;
     }
 
@@ -158,6 +158,14 @@ public class Product {
 
     public void setEndtime(Date endtime) {
         this.endtime = endtime;
+    }
+
+    public String getShowname() {
+        return showname;
+    }
+
+    public void setShowname(String showname) {
+        this.showname = showname;
     }
 
     @Override
