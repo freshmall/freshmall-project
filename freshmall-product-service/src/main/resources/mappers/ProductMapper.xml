@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>  
-<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
-	"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
 <mapper namespace="cn.tedu.product.mapper.ProductMapper">
 
@@ -10,44 +10,121 @@
 		select
 			*
 		from
-			t_product
+			product
 		where
 			product_id=#{productId};
 	</select>
 
 
-	<!-- 查询product总条数 -->
-	<select id="countProducts" resultType="int">
+	<!-- 查询某商品大类product总条数 -->
+	<select id="countProductsByPdlcode" resultType="int">
 		select
 			count(product_id)
 		from
-			t_product;
+			product
+		where
+			pdlcode=#{pdlcode};
 	</select>
-	
-	<!-- 根据页面参数分页查询 -->
-	<select id="queryProductList" resultType="Product">
+
+	<!-- 按商品大类分页查询 -->
+	<select id="queryProductListByPdlcodeAndPage" resultType="Product">
 		select
 			*
 		from
-			t_product
+			product
+		where
+			pdlcode=#{pdlcode}
 		limit
 			#{start},#{rows};
 	</select>
 
-	<!-- 根据商品销量排名的分页查询 -->
-	<select id="queryProductList" resultType="Product">
+
+	<!-- 查询某商品小类product总条数 -->
+	<select id="countProductsByPxlcode" resultType="int">
+		select
+			count(product_id)
+		from
+			product
+		where
+			pxlcode=#{pxlcode};
+	</select>
+
+	<!-- 按商品小类分页查询 -->
+	<select id="queryProductListByPxlcodeAndPage" resultType="Product">
 		select
 			*
 		from
-			t_product
-		order by
-			product_salves
-		limit 0,4;
+			product
+		where
+			pxlcode=#{pxlcode}
+		limit
+			#{start},#{rows};
 	</select>
 
-	
+	<!-- 查询某商品名称product总条数 -->
+	<select id="countProductsByPname" resultType="int">
+		select
+			count(product_id)
+		from
+			product
+		where
+			pname=#{pname};
+	</select>
 
-	
+	<!-- 按商品名称分页查询 -->
+	<select id="queryProductListByPnameAndPage" resultType="Product">
+		select
+			*
+		from
+			product
+		where
+			pname=#{pname}
+		limit
+			#{start},#{rows};
+	</select>
+
+	<!--新增商品-->
+	<insert id="addProduct">
+		insert into product (
+			pid,pname,showname,paddress,pstate,
+    		pdlcode,pxlcode,pfbtime,pgrade,pphoto,
+    		pbigphoto,pscprice,phyprice,
+    		psum,putil,pintroduce,starttime,endtime
+		values(
+			#{pid},#{pname},#{showname},#{paddress},#{pstate},
+    		#{pdlcode},#{pxlcode},#{pfbtime},#{pgrade},#{pphoto},
+    		#{pbigphoto},#{pscprice},#{phyprice},
+    		#{psum},#{putil},#{pintroduce},#{starttime},#{endtime});
+	</insert>
+
+	<!-- 修改商品详情 -->
+	<update id="updateProduct">
+		update
+			product
+		set
+			pname=#{pname},
+			showname=#{showname},
+			paddress=#{paddress},
+			pstate=#{pstate},
+    		pdlcode=#{pdlcode},
+    		pxlcode=#{pxlcode},
+    		pfbtime=#{pfbtime},
+    		pgrade=#{pgrade},
+    		pphoto=#{pphoto},
+    		pbigphoto=#{pbigphoto},
+    		pscprice=#{pscprice},
+    		phyprice=#{phyprice},
+    		psum=#{psum},
+    		putil=#{putil},
+    		pintroduce=#{pintroduce},
+    		starttime=#{starttime},
+    		endtime=#{endtime}
+		where
+			pid=#{pid};
+	</update>
+
+
+
 </mapper>
 
 

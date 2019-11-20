@@ -1,6 +1,7 @@
 package cn.tedu.product.mapper;
 
 import com.fresh.common.pojo.Product;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -14,23 +15,62 @@ public interface ProductMapper {
     Product selectProductByProductId(String productId);
 
     /**
-     *  统计商品数据条数--为分页查询准备
+     *  统计某商品大类下的数据条数
      * @return
+     * @param pdlcode
      */
-    int countProducts();
+    int countProductsByPdlcode(String pdlcode);
 
     /**
-     *  商品列表的分页查询
+     * 商品按大类分页查询持久层方法
      * @param start
      * @param rows
+     * @param pdlcode
      * @return
      */
-    List<Product> queryProductList(int start, Integer rows);
+    List<Product> queryProductListByPdlcodeAndPage(@Param("start") int start, @Param("rows") Integer rows, @Param("pdlcode") String pdlcode);
 
     /**
-     *  以商品销量排行的商品列表
+     * 统计商品小类下的数据条数
+     * @param pdlcode
      * @return
      */
-    List<Product> queryProductListForRank();
+    int countProductsByPxlcode(String pdlcode);
 
+    /**
+     * 商品按小类分页查询持久层方法
+     * @param start
+     * @param rows
+     * @param pxlcode
+     * @return
+     */
+    List<Product> queryProductListByPxlcodeAndPage(@Param("start") int start, @Param("rows") Integer rows, @Param("pxlcode") String pxlcode);
+
+    /**
+     * 统计某商品名称下的数据条数
+     * @param pname
+     * @return
+     */
+    int countProductsByPname(String pname);
+
+    /**
+     * 商品按pname分页查询持久层方法
+     * @param start
+     * @param rows
+     * @param pname
+     * @return
+     */
+    List<Product> queryProductListByPnameAndPage(@Param("start") int start, @Param("rows") Integer rows, @Param("pname") String pname);
+
+    /**
+     * 新增商品持久层方法
+     * @param product
+     */
+    void addProduct(Product product);
+
+    /**
+     * 更新或删除商品
+     * @param pid
+     */
+    void updateProduct(String pid);
 }
