@@ -13,7 +13,9 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 public class StartCart {
     public static void main(String[] args) {
+
         SpringApplication.run(StartCart.class, args);
+
     }
 
     @Bean
