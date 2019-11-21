@@ -3,7 +3,7 @@ package com.fresh.common.pojo;
 public class OrderItem {
 	private Long id;
 	private String orderId;
-	private String pId;
+	private String pid;
 	private Integer num;
 	private String pphoto;
 	private String showName;
@@ -25,12 +25,12 @@ public class OrderItem {
         this.orderId = orderId;
     }
 
-    public String getpId() {
-        return pId;
+    public String getpid() {
+        return pid;
     }
 
-    public void setpId(String pId) {
-        this.pId = pId;
+    public void setpid(String pid) {
+        this.pid = pid;
     }
 
     public Integer getNum() {

@@ -42,7 +42,7 @@
 	pphoto,showname,pscprice
 	) values
 	<foreach collection="orderItems" item="item" separator=",">
-	(#{orderId},#{item.pId},#{item.num},
+	(#{orderId},#{item.pid},#{item.num},
 	#{item.pphoto},#{item.showName},#{item.pscprice})
 	</foreach>
    </insert>
