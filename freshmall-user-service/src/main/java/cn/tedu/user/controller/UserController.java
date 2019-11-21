@@ -42,8 +42,14 @@ public class UserController {
 	 * 注册用户
 	 */
 	@RequestMapping("save")
-	public void saveUser(User user){
-		userService.saveUser(user);
+	public SysResult saveUser(User user){
+	    try{
+            userService.saveUser(user);
+            return SysResult.ok();
+        }catch (Exception e){
+	        return SysResult.build(201,"注册失败",null);
+        }
+
 	}
 
 	/**
