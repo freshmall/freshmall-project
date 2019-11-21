@@ -13,10 +13,10 @@ public interface ProductMapper {
     int queryTotalCount();
     /**
      * 根据商品id查询商品详情持久层方法
-     * @param productId
+     * @param pid
      * @return
      */
-    Product selectProductByProductId(String productId);
+    Product selectProductByProductId(String pid);
 
     /**
      *  统计某商品大类下的数据条数

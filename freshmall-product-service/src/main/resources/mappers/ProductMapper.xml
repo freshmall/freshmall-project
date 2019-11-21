@@ -12,7 +12,7 @@
 			product;
 	</select>
 
-	<!-- 根据productId查询商品详情 -->
+	<!-- 根据pid查询商品详情 -->
 	<select id="selectProductByProductId" resultType="Product">
 		select
 			*
@@ -35,13 +35,18 @@
 
 	<!-- 按商品大类分页查询 -->
 	<select id="queryProductListByPdlcodeAndPage" resultType="Product">
-		select
-			*
-		from
-			product
-		where
-			pdlcode=#{pdlcode}
-		limit
+		SELECT
+			a.pid,a.showname,a.pname,a.paddress,a.pstate,a.pgrade,a.pphoto,a.pbigphoto,
+			a.pscprice,a.phyprice,a.psum,a.putil,a.pintroduce,a.starttime,a.endtime,
+			b.dlname,
+			c.xlname
+		FROM
+			product a
+		LEFT JOIN cpdl b ON a.pdlcode=b.dlcode
+		LEFT JOIN cpxl c ON a.pxlcode=c.xlcode
+		WHERE
+			a.pdlcode=#{pdlcode}
+		LIMIT
 			#{start},#{rows};
 	</select>
 
@@ -58,13 +63,18 @@
 
 	<!-- 按商品小类分页查询 -->
 	<select id="queryProductListByPxlcodeAndPage" resultType="Product">
-		select
-			*
-		from
-			product
-		where
-			pxlcode=#{pxlcode}
-		limit
+		SELECT
+			a.pid,a.showname,a.pname,a.paddress,a.pstate,a.pgrade,a.pphoto,a.pbigphoto,
+			a.pscprice,a.phyprice,a.psum,a.putil,a.pintroduce,a.starttime,a.endtime,
+			b.dlname,
+			c.xlname
+		FROM
+			product a
+		LEFT JOIN cpdl b ON a.pdlcode=b.dlcode
+		LEFT JOIN cpxl c ON a.pxlcode=c.xlcode
+		WHERE
+			a.pxlcode=#{pxlcode}
+		LIMIT
 			#{start},#{rows};
 	</select>
 
@@ -80,13 +90,18 @@
 
 	<!-- 按商品名称分页查询 -->
 	<select id="queryProductListByPnameAndPage" resultType="Product">
-		select
-			*
-		from
-			product
-		where
-			pname=#{pname}
-		limit
+		SELECT
+			a.pid,a.showname,a.pname,a.paddress,a.pstate,a.pgrade,a.pphoto,a.pbigphoto,
+			a.pscprice,a.phyprice,a.psum,a.putil,a.pintroduce,a.starttime,a.endtime,
+			b.dlname,
+			c.xlname
+		FROM
+			product a
+		LEFT JOIN cpdl b ON a.pdlcode=b.dlcode
+		LEFT JOIN cpxl c ON a.pxlcode=c.xlcode
+		WHERE
+			pname like concat(concat('%',#{pname},'%'))
+		LIMIT
 			#{start},#{rows};
 	</select>
 

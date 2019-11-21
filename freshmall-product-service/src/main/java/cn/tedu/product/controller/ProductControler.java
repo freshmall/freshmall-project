@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/goods")
+@RequestMapping("/product/manage")
 public class ProductControler {
 
     @Autowired
@@ -18,12 +18,14 @@ public class ProductControler {
 
     /**
      * 根据商品id查询商品详情
-     * @param productId 商品id
+     * @param pid 商品id
      * @return  商品详情
      */
-    @RequestMapping("/detail/{productId}")
-    public Product queryProductDetail(@PathVariable String productId){
-        return productService.queryProductDetail(productId);
+    @RequestMapping("/detail/{pid}")
+    public Product queryProductDetail(@PathVariable String pid){
+       Product product = productService.queryProductDetail(pid);
+
+        return product;
     }
 
 
@@ -34,7 +36,7 @@ public class ProductControler {
      * @param pdlcode 商品大类参数
      * @return 商品集合的json
      */
-    @RequestMapping("/query/pdlcode")
+    @RequestMapping("/query1")
     public EasyUIResult queryProductByPdlcodeAndPage(Integer page,Integer rows,String pdlcode){
         return  productService.queryProductByPdlcodeAndPage(page,rows,pdlcode);
     }
@@ -46,7 +48,7 @@ public class ProductControler {
      * @param pxlcode
      * @return
      */
-    @RequestMapping("/query/pxlcode")
+    @RequestMapping("/query2")
     public EasyUIResult queryProductByPxlcodeAndPage(Integer page,Integer rows,String pxlcode){
         return  productService.queryProductByPxlcodeAndPage(page,rows,pxlcode);
     }
@@ -58,7 +60,7 @@ public class ProductControler {
      * @param pname
      * @return
      */
-    @RequestMapping("/query/pname")
+    @RequestMapping("/query3")
     public EasyUIResult queryProductByPnameAndPage(Integer page,Integer rows,String pname){
         return  productService.queryProductByPnameAndPage(page,rows,pname);
     }
