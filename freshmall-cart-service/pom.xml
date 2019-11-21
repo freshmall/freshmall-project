@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
+       <groupId>cn.tedu</groupId>
         <artifactId>freshmall-project</artifactId>
-        <groupId>cn.tedu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -19,7 +19,7 @@
             <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
         <dependency>
-            <groupId>cn.tedu</groupId>
+         <groupId>cn.tedu</groupId>
             <artifactId>freshmall-common-resources</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

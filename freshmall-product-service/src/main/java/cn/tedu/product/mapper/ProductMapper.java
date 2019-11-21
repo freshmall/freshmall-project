@@ -8,6 +8,10 @@ import java.util.List;
 public interface ProductMapper {
 
     /**
+     * 查询总的商品数量
+     */
+    int queryTotalCount();
+    /**
      * 根据商品id查询商品详情持久层方法
      * @param productId
      * @return
@@ -73,4 +77,13 @@ public interface ProductMapper {
      * @param pid
      */
     void updateProduct(String pid);
+
+    /**
+     * 查询总的商品
+     * @param start
+     * @param rows
+     * @return
+     */
+
+    List<Product> queryProducts(@Param("start")int start, @Param("rows")Integer rows);
 }

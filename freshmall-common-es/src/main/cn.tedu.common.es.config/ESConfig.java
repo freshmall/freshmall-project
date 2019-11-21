@@ -33,9 +33,7 @@ public class ESConfig {
 			int port =Integer.parseInt(node.split(":")[1]);
 			InetSocketTransportAddress address1=
 					new InetSocketTransportAddress(InetAddress.getByName(host),port);
-			
 			client.addTransportAddress(address1);
-            System.out.println(client);
 		}
 		return client;	
 	}

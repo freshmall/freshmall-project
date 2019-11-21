@@ -28,24 +28,26 @@
    </select>
 
 
-   <!--新增订单  -->
-   <insert id="insertOrderAndOrderItems" parameterType="Order">
-   <!-- 主表数据插入 -->
-	insert into order (
-	order_id,order_money,order_receiverinfo,
-	order_paystate,order_time,user_id) values(
-	#{orderId},#{orderMoney},#{orderReceiverinfo},
-	#{orderPaystate},#{orderTime},#{userId});
-	<!-- 从表数据 -->
-	insert into order_item (
-	order_id,pId,num,
-	pphoto,showname,pscprice
-	) values
-	<foreach collection="orderItems" item="item" separator=",">
-	(#{orderId},#{item.pid},#{item.num},
-	#{item.pphoto},#{item.showName},#{item.pscprice})
-	</foreach>
-   </insert>
+    <!-- 新增订单 -->
+    <insert id="insertOrderAndOrderItems" parameterType="Order">
+        <!-- 新增主表 -->
+        insert into order
+        (order_id,order_money,order_receiverinfo,
+        order_time,order_paystate,user_id) values(
+        #{orderId},#{orderMoney},#{orderReceiverinfo},
+        #{orderTime},#{orderPaystate},#{userId});
+        <!-- 新增子表数据 -->
+        <!-- for(OrderItem oi:orderItems) -->
+        <foreach collection="orderItems" item="oi">
+            <!-- oi都是携带过来的orderItem对象 id orderId缺少 -->
+            insert into order_item
+            (order_id,product_id,num,
+            pname,pphoto,pscprice) values(
+            #{orderId},#{oi.pid},#{oi.num},
+            #{oi.pname},#{oi.pphoto},
+            #{oi.pscprice});
+        </foreach>
+    </insert>
 
    <!--删除订单  -->
    <delete id="deleteOrder" parameterType="String">
