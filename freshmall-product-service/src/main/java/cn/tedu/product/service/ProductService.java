@@ -17,11 +17,11 @@ public class ProductService {
 
     /**
      * 根据商品id查询商品详情业务层方法
-     * @param productId
+     * @param pid
      * @return
      */
-    public Product queryProductDetail(String productId) {
-        return productMapper.selectProductByProductId(productId);
+    public Product queryProductDetail(String pid) {
+        return productMapper.selectProductByProductId(pid);
     }
 
 
