@@ -17,5 +17,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <!-- 将不需要的要移除jar包 -->
         </dependency>
+        <!--jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

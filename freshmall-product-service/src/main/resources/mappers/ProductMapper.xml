@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+		"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.product.mapper.ProductMapper">
+
+
+	<!-- 根据productId查询商品详情 -->
+	<select id="selectProductByProductId" resultType="Product">
+		select
+			*
+		from
+			product
+		where
+			pid=#{pid};
+	</select>
+
+
+	<!-- 查询某商品大类product总条数 -->
+	<select id="countProductsByPdlcode" resultType="int">
+		select
+			count(pid)
+		from
+			product
+		where
+			pdlcode=#{pdlcode};
+	</select>
+
+	<!-- 按商品大类分页查询 -->
+	<select id="queryProductListByPdlcodeAndPage" resultType="Product">
+		select
+			*
+		from
+			product
+		where
+			pdlcode=#{pdlcode}
+		limit
+			#{start},#{rows};
+	</select>
+
+
+	<!-- 查询某商品小类product总条数 -->
+	<select id="countProductsByPxlcode" resultType="int">
+		select
+			count(pid)
+		from
+			product
+		where
+			pxlcode=#{pxlcode};
+	</select>
+
+	<!-- 按商品小类分页查询 -->
+	<select id="queryProductListByPxlcodeAndPage" resultType="Product">
+		select
+			*
+		from
+			product
+		where
+			pxlcode=#{pxlcode}
+		limit
+			#{start},#{rows};
+	</select>
+
+	<!-- 查询某商品名称product总条数 -->
+	<select id="countProductsByPname" resultType="int">
+		select
+			count(pid)
+		from
+			product
+		where
+			pname=#{pname};
+	</select>
+
+	<!-- 按商品名称分页查询 -->
+	<select id="queryProductListByPnameAndPage" resultType="Product">
+		select
+			*
+		from
+			product
+		where
+			pname=#{pname}
+		limit
+			#{start},#{rows};
+	</select>
+
+	<!--新增商品-->
+	<insert id="addProduct">
+		insert into product (
+			pid,pname,showname,paddress,pstate,
+    		pdlcode,pxlcode,pfbtime,pgrade,pphoto,
+    		pbigphoto,pscprice,phyprice,
+    		psum,putil,pintroduce,starttime,endtime
+		values(
+			#{pid},#{pname},#{showname},#{paddress},#{pstate},
+    		#{pdlcode},#{pxlcode},#{pfbtime},#{pgrade},#{pphoto},
+    		#{pbigphoto},#{pscprice},#{phyprice},
+    		#{psum},#{putil},#{pintroduce},#{starttime},#{endtime});
+	</insert>
+
+	<!-- 修改商品详情 -->
+	<update id="updateProduct">
+		update
+			product
+		set
+			pname=#{pname},
+			showname=#{showname},
+			paddress=#{paddress},
+			pstate=#{pstate},
+    		pdlcode=#{pdlcode},
+    		pxlcode=#{pxlcode},
+    		pfbtime=#{pfbtime},
+    		pgrade=#{pgrade},
+    		pphoto=#{pphoto},
+    		pbigphoto=#{pbigphoto},
+    		pscprice=#{pscprice},
+    		phyprice=#{phyprice},
+    		psum=#{psum},
+    		putil=#{putil},
+    		pintroduce=#{pintroduce},
+    		starttime=#{starttime},
+    		endtime=#{endtime}
+		where
+			pid=#{pid};
+	</update>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
