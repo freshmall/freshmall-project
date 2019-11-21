@@ -15,13 +15,15 @@ import redis.clients.jedis.JedisPoolConfig;
 @Configuration
 @ConfigurationProperties(prefix="redis.cluster")
 public class ClusterConfig {
-	//节点信息
+	//连接地址和Ip 信息
 	private List<String> nodes;
+
 	//最大连接数,最大空闲,最小空闲
 	private Integer maxTotal;
 	private Integer maxIdle;
 	private Integer minIdle;
-	//初始化的方法
+
+	//JedisCluster 初始化的方法
 	@Bean
 	public JedisCluster initCluster(){
 		Set<HostAndPort> set=new HashSet<HostAndPort>();
@@ -38,6 +40,7 @@ public class ClusterConfig {
 		config.setMaxIdle(maxIdle);
 		return new JedisCluster(set,config);
 	}
+
 	public List<String> getNodes() {
 		return nodes;
 	}

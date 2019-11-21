@@ -21,6 +21,7 @@ import cn.tedu.user.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+
 	/**
 	 * 用户名的校验
 	 */
@@ -36,6 +37,7 @@ public class UserController {
             return SysResult.ok();
 		}
 	}
+
 	/**
 	 * 注册用户
 	 */
@@ -43,6 +45,7 @@ public class UserController {
 	public void saveUser(User user){
 		userService.saveUser(user);
 	}
+
 	/**
 	 * 用户登录
 	 *
@@ -58,6 +61,11 @@ public class UserController {
 		}
 	}
 
+	/**
+	 * 查询用户是否已经登录
+	 * @param ticket  usejson的key值
+	 * @return
+	 */
 	@RequestMapping("/query/{ticket}")
 	public SysResult checkLoginUserData(@PathVariable String ticket){
 		String userJson=userService.checkLoginUserData(ticket);
@@ -93,10 +101,10 @@ public class UserController {
         try {
             //req.getRequestDispatcher("/index.html").forward(req, res);
             res.sendRedirect("http://www.freshgree.com");
+			return SysResult.ok();
         } catch (Exception e) {
             e.printStackTrace();
+            return SysResult.build(201,"退出失败",null);
         }
-        return SysResult.ok();
-
     }
 }

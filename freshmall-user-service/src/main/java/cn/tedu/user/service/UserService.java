@@ -43,6 +43,7 @@ public class UserService {
 		//redis集群实现分布式高可用
 	@Autowired
 	private JedisCluster jedis;
+
 	/**
 	 * 登录校验
 	 */
@@ -63,7 +64,7 @@ public class UserService {
 					//删除上次登录的,新增
 					jedis.del(jedis.get(userLoginIdent));
 				}
-				//设置数据
+				//设置cookie存储时间
 				jedis.setex(userLoginIdent, 60 * 60 * 3, ticket);
 				jedis.setex(ticket, 60 * 60 * 2, userJson);
 				return ticket;
@@ -73,6 +74,12 @@ public class UserService {
 			}
 		}
 	}
+
+	/**
+	 * 续约逻辑
+	 * @param ticket cookie的名称
+	 * @return userjson
+	 */
 	public String checkLoginUserData(String ticket) {
 		//要保证userLoginIdent的时间要大于ticket
 		String userLoginIdent="user_login_"+ticket.substring(22);
