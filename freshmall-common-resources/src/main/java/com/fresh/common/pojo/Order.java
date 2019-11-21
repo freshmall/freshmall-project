@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Order {
+    //
 	private String orderId;
 	private Double orderMoney;
 	private String orderReceiverinfo;
