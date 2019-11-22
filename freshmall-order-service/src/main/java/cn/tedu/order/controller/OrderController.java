@@ -31,6 +31,7 @@ public class OrderController {
 	 */
 	@RequestMapping("save")
 	public SysResult addOrder(Order order){
+        System.out.println(order);
 		try{
 			orderService.addOrder(order);
 			return SysResult.ok();

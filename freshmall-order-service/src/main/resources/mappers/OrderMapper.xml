@@ -24,34 +24,25 @@
    </resultMap>
 
    <select id="selectOrderByUserId" parameterType="String" resultMap="orderMP">
-   	select * from order inner join order_item on order.order_id=order_item.order_id and order.user_id=#{userId};
+   	select * from t_order inner join order_item on t_order.order_id=order_item.order_id and t_order.user_id=#{userId};
    </select>
 
 
     <!-- 新增订单 -->
     <insert id="insertOrderAndOrderItems" parameterType="Order">
         <!-- 新增主表 -->
-        insert into order
-        (order_id,order_money,order_receiverinfo,
-        order_time,order_paystate,user_id) values(
-        #{orderId},#{orderMoney},#{orderReceiverinfo},
-        #{orderTime},#{orderPaystate},#{userId});
+        insert into t_order(order_id,order_money,order_receiverinfo,order_time,order_paystate,user_id) values(#{orderId},#{orderMoney},#{orderReceiverinfo},#{orderTime},#{orderPaystate},#{userId});
         <!-- 新增子表数据 -->
         <!-- for(OrderItem oi:orderItems) -->
         <foreach collection="orderItems" item="oi">
             <!-- oi都是携带过来的orderItem对象 id orderId缺少 -->
-            insert into order_item
-            (order_id,product_id,num,
-            pname,pphoto,pscprice) values(
-            #{orderId},#{oi.pid},#{oi.num},
-            #{oi.pname},#{oi.pphoto},
-            #{oi.pscprice});
+            insert into order_item (order_id,pid,num,pname,pphoto,pscprice) values(#{orderId},#{oi.pid},#{oi.num},#{oi.pname},#{oi.pphoto},#{oi.pscprice});
         </foreach>
     </insert>
 
    <!--删除订单  -->
    <delete id="deleteOrder" parameterType="String">
-   delete from order where order_id=#{orderId};
+   delete from t_order where order_id=#{orderId};
    delete from order_item where order_id=#{orderId};
    </delete>
    
