@@ -13,14 +13,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix="easymall.es")
+@ConfigurationProperties(prefix="freshgree.es")
 public class ESConfig {
+
 	private List<String> nodes;
+
 	public List<String> getNodes() {
 		return nodes;
 	}
 	public void setNodes(List<String> nodes) {
 		this.nodes = nodes;
+
 	}
 	@Bean
 	public TransportClient initTransportClient() throws Exception{
@@ -30,7 +33,6 @@ public class ESConfig {
 			int port =Integer.parseInt(node.split(":")[1]);
 			InetSocketTransportAddress address1=
 					new InetSocketTransportAddress(InetAddress.getByName(host),port);
-			
 			client.addTransportAddress(address1);
 		}
 		return client;	

@@ -9,6 +9,11 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @MapperScan("cn.tedu.product.mapper")
 @EnableEurekaClient
 public class ProductStarter {
+	//jhkjhjkhjk
+	/**
+	 * application启动
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(ProductStarter.class, args);
 	}
