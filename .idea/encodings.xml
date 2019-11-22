@@ -3,6 +3,7 @@
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eureka-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/freshmall-cart-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/freshmall-common-es" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/freshmall-common-resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/freshmall-img-service" charset="UTF-8" />

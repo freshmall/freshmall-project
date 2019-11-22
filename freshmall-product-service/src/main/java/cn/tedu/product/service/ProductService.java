@@ -93,4 +93,14 @@ public class ProductService {
     public void updateProduct(String pid) {
         productMapper.updateProduct(pid);
     }
+
+    public EasyUIResult queryProductsByPage(Integer page, Integer rows) {
+        EasyUIResult result = new EasyUIResult();
+        int total = productMapper.queryTotalCount();
+        result.setTotal(total);// 显示页数
+        int start = (page - 1) * rows;
+        List<Product> pList = productMapper.queryProducts(start, rows);
+        result.setRows(pList);
+        return result;
+    }
 }
