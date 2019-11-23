@@ -7,7 +7,7 @@ public class OrderItem {
 	private Integer num;
 	private String pphoto;
 	private String pname;
-	private Double pscprice;
+	private double phyprice;
 
     public Long getId() {
         return id;
@@ -57,11 +57,11 @@ public class OrderItem {
         this.pname = pname;
     }
 
-    public Double getPscprice() {
-        return pscprice;
+    public double getPhyprice() {
+        return phyprice;
     }
 
-    public void setPscprice(Double pscprice) {
-        this.pscprice = pscprice;
+    public void setPhyprice(double phyprice) {
+        this.phyprice = phyprice;
     }
 }

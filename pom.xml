@@ -17,6 +17,8 @@
       <module>freshmall-user-service</module>
       <module>eureka-server</module>
       <module>zuul-gateway</module>
+        <module>freshmall-cart-server</module>
+        <module>freshmall-cart-service</module>
     </modules>
     <packaging>pom</packaging>
 

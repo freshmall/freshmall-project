@@ -1,7 +1,8 @@
 package com.fresh.common.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
-public class Product {
+public class Product implements Serializable {
     private String pid;
     private String pname;
     private String showname;
@@ -14,8 +15,8 @@ public class Product {
     private String pphoto;
     private String pbigphoto;
     private double pscprice;
-    private int phyprice;
-    private String psum;
+    private double phyprice;
+    private int psum;
     private String putil;
     private String pintroduce;
     private Date starttime;
@@ -111,19 +112,19 @@ public class Product {
         this.pscprice = pscprice;
     }
 
-    public int getPhyprice() {
+    public double getPhyprice() {
         return phyprice;
     }
 
-    public void setPhyprice(int phyprice) {
+    public void setPhyprice( double phyprice) {
         this.phyprice = phyprice;
     }
 
-    public String getPsum() {
+    public int getPsum() {
         return psum;
     }
 
-    public void setPsum(String psum) {
+    public void setPsum(int psum) {
         this.psum = psum;
     }
 
