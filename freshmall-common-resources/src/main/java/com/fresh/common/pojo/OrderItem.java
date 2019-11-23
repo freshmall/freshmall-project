@@ -64,4 +64,18 @@ public class OrderItem {
     public void setPhyprice(double phyprice) {
         this.phyprice = phyprice;
     }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", orderId='" + orderId + '\'' +
+                ", pid='" + pid + '\'' +
+                ", num=" + num +
+                ", pphoto='" + pphoto + '\'' +
+                ", pname='" + pname + '\'' +
+                ", phyprice=" + phyprice +
+                '}';
+    }
+
 }

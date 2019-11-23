@@ -70,4 +70,18 @@ public class Cart implements Serializable {
 
     public Cart() {
     }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", pid='" + pid + '\'' +
+                ", pphoto='" + pphoto + '\'' +
+                ", pname='" + pname + '\'' +
+                ", phyprice=" + phyprice +
+                ", num=" + num +
+                '}';
+    }
 }
+
