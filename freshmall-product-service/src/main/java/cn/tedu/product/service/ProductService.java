@@ -82,16 +82,16 @@ public class ProductService {
      * @param product
      */
     public void addProduct(Product product) {
-        product.setPid(UUIDUtil.getUUID());
+        product.setPid(UUIDUtil.getUUID().toString());
         productMapper.addProduct(product);
     }
 
     /**
      * 更新或删除商品业务层方法
-     * @param pid
+     * @param product
      */
-    public void updateProduct(String pid) {
-        productMapper.updateProduct(pid);
+    public void updateProduct(Product product) {
+        productMapper.updateProduct(product);
     }
 
     public EasyUIResult queryProductsByPage(Integer page, Integer rows) {
@@ -103,4 +103,5 @@ public class ProductService {
         result.setRows(pList);
         return result;
     }
+
 }

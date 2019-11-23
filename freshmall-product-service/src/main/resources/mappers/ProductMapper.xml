@@ -106,43 +106,13 @@
 	</select>
 
 	<!--新增商品-->
-	<insert id="addProduct">
-		insert into product (
-			pid,pname,showname,paddress,pstate,
-    		pdlcode,pxlcode,pfbtime,pgrade,pphoto,
-    		pbigphoto,pscprice,phyprice,
-    		psum,putil,pintroduce,starttime,endtime
-		values(
-			#{pid},#{pname},#{showname},#{paddress},#{pstate},
-    		#{pdlcode},#{pxlcode},#{pfbtime},#{pgrade},#{pphoto},
-    		#{pbigphoto},#{pscprice},#{phyprice},
-    		#{psum},#{putil},#{pintroduce},#{starttime},#{endtime});
+	<insert id="addProduct" parameterType="Product">
+		insert into product (pid,pname,showname,paddress,pstate,pdlcode,pxlcode,pfbtime,pgrade,pphoto,pbigphoto,pscprice,phyprice,psum,putil,pintroduce,starttime,endtime) values (#{pid},#{pname},#{showname},#{paddress},#{pstate},#{pdlcode},#{pxlcode},#{pfbtime},#{pgrade},#{pphoto},#{pbigphoto},#{pscprice},#{phyprice},#{psum},#{putil},#{pintroduce},#{starttime},#{endtime});
 	</insert>
 
 	<!-- 修改商品详情 -->
 	<update id="updateProduct">
-		update
-			product
-		set
-			pname=#{pname},
-			showname=#{showname},
-			paddress=#{paddress},
-			pstate=#{pstate},
-    		pdlcode=#{pdlcode},
-    		pxlcode=#{pxlcode},
-    		pfbtime=#{pfbtime},
-    		pgrade=#{pgrade},
-    		pphoto=#{pphoto},
-    		pbigphoto=#{pbigphoto},
-    		pscprice=#{pscprice},
-    		phyprice=#{phyprice},
-    		psum=#{psum},
-    		putil=#{putil},
-    		pintroduce=#{pintroduce},
-    		starttime=#{starttime},
-    		endtime=#{endtime}
-		where
-			pid=#{pid};
+		update product set pname=#{pname},showname=#{showname},paddress=#{paddress},pphoto=#{pphoto},pscprice=#{pscprice},phyprice=#{phyprice},psum=#{psum} where pid=#{pid};
 	</update>
 
     <select id="queryProducts" resultType="Product">

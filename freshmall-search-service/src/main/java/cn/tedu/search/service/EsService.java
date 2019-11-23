@@ -22,7 +22,7 @@ public class EsService {
 	private TransportClient client;
 	
 	public List<Product> search(String text, Integer page, Integer rows) throws Exception{
-		//
+	    //
 		QueryBuilders.matchQuery("pname", text);
 		MultiMatchQueryBuilder query = QueryBuilders.multiMatchQuery(text,"pname","showname");
 		//获取requet对象
@@ -32,7 +32,7 @@ public class EsService {
  		SearchHit[] hits=response.getHits().getHits();
  		for(SearchHit hit : hits){
  			String pJson=hit.getSourceAsString();
- 			Product product= MapperUtil.MP.readValue(pJson,Product.class);
+            Product product= MapperUtil.MP.readValue(pJson,Product.class);
  			pList.add(product);
  		}
 		return pList;

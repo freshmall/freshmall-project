@@ -74,9 +74,9 @@ public interface ProductMapper {
 
     /**
      * 更新或删除商品
-     * @param pid
+     * @param product
      */
-    void updateProduct(String pid);
+    void updateProduct(Product product);
 
     /**
      * 查询总的商品
