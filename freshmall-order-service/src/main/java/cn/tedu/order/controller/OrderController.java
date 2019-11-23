@@ -3,6 +3,7 @@ package cn.tedu.order.controller;
 import java.util.List;
 
 import com.fresh.common.pojo.Order;
+import com.fresh.common.vo.EasyUIResult;
 import com.fresh.common.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,4 +51,19 @@ public class OrderController {
 			return SysResult.build(201,"删除订单失败",null);
 		}
 	}
+
+
+
+    @RequestMapping("pageManage")
+    public EasyUIResult queryOrdersByPage(Integer page, Integer rows){
+
+        return orderService.queryOrdersByPage(page,rows);
+    }
+
+    @RequestMapping("pageManage2")
+    public EasyUIResult queryOrderdsByPage2(Integer page,Integer rows){
+
+        return orderService.queryOrdersByPage2(page,rows);
+    }
+
 }

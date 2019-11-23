@@ -25,7 +25,8 @@ public class CartController {
 	
 	@RequestMapping("query")
 	public List<Cart> queryMyCart(String userId){
-		return cartService.queryMyCart(userId);
+        System.out.println(cartService.queryMyCart(userId));
+	    return cartService.queryMyCart(userId);
 	}
 	/**
 	 * 新增购物车

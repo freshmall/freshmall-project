@@ -15,10 +15,10 @@
    <collection property="orderItems" javaType="ArrayList" ofType="OrderItem">
    	<id property="id" column="id"/>
    	<result property="orderId" column="order_id"/>
-   	<result property="pId" column="pid"/>
-   	<result property="showName" column="showname"/>
+   	<result property="pid" column="pid"/>
+   	<result property="pname" column="pname"/>
    	<result property="pphoto" column="pphoto"/>
-   	<result property="productPrice" column="product_price"/>
+   	<result property="phyprice" column="phyprice"/>
    	<result property="num" column="num"/>
    </collection>
    </resultMap>
@@ -36,7 +36,7 @@
         <!-- for(OrderItem oi:orderItems) -->
         <foreach collection="orderItems" item="oi">
             <!-- oi都是携带过来的orderItem对象 id orderId缺少 -->
-            insert into order_item (order_id,pid,num,pname,pphoto,phyprice) values(#{orderId},#{oi.pid},#{oi.num},#{oi.pname},#{oi.pphoto},#{oi.phycprice});
+            insert into order_item (order_id,pid,num,pname,pphoto,phyprice) values(#{orderId},#{oi.pid},#{oi.num},#{oi.pname},#{oi.pphoto},#{oi.phyprice});
         </foreach>
     </insert>
 
@@ -45,5 +45,24 @@
    delete from t_order where order_id=#{orderId};
    delete from order_item where order_id=#{orderId};
    </delete>
-   
+
+
+
+    <select id="queryTotalCount" resultType="int">
+		select count(order_id) from t_order;
+	</select>
+
+    <select id="queryTotalCount2" resultType="int">
+		select count(pid) from order_item;
+	</select>
+
+    <select id="queryOrders" resultType="Order">
+		select * from t_order limit #{start},#{rows};
+	</select>
+
+
+    <select id="queryProducts" resultType="Order">
+		select * from order_item limit #{start},#{rows};
+	</select>
+
 </mapper>
