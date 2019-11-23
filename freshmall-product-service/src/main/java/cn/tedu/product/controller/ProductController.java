@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/product/manage")
-public class ProductControler {
+@RequestMapping("product/manage")
+public class ProductController {
 
     @Autowired
     private ProductService productService = null;
@@ -21,7 +21,8 @@ public class ProductControler {
      * @param pid 商品id
      * @return  商品详情
      */
-    @RequestMapping("/detail/{pid}")
+    //http://productservice"+"/product/manage/detail/
+    @RequestMapping("detail/{pid}")
     public Product queryProductDetail(@PathVariable String pid){
        Product product = productService.queryProductDetail(pid);
 
@@ -95,4 +96,5 @@ public class ProductControler {
             return SysResult.build(201,"更新或删除商品失败",null);
         }
     }
+
 }

@@ -36,7 +36,7 @@
         <!-- for(OrderItem oi:orderItems) -->
         <foreach collection="orderItems" item="oi">
             <!-- oi都是携带过来的orderItem对象 id orderId缺少 -->
-            insert into order_item (order_id,pid,num,pname,pphoto,pscprice) values(#{orderId},#{oi.pid},#{oi.num},#{oi.pname},#{oi.pphoto},#{oi.pscprice});
+            insert into order_item (order_id,pid,num,pname,pphoto,phyprice) values(#{orderId},#{oi.pid},#{oi.num},#{oi.pname},#{oi.pphoto},#{oi.phycprice});
         </foreach>
     </insert>
 

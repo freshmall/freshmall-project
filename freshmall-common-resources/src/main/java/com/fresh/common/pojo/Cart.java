@@ -9,7 +9,7 @@ public class Cart implements Serializable {
     private String pid;
     private String pphoto;
     private String pname;
-    private Double pscprice;
+    private Double phyprice;
     private Integer num;
 
     public Integer getId() {
@@ -52,12 +52,12 @@ public class Cart implements Serializable {
         this.pname = pname;
     }
 
-    public Double getPscprice() {
-        return pscprice;
+    public Double getPhyprice() {
+        return phyprice;
     }
 
-    public void setPscprice(Double pscprice) {
-        this.pscprice = pscprice;
+    public void setPhyprice(Double phyprice) {
+        this.phyprice = phyprice;
     }
 
     public Integer getNum() {
@@ -66,5 +66,8 @@ public class Cart implements Serializable {
 
     public void setNum(Integer num) {
         this.num = num;
+    }
+
+    public Cart() {
     }
 }
